@@ -29,11 +29,12 @@
             background-position: bottom;
             background-size: cover;
 
-            color: sandybrown;
+            color: navy;
 
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            padding-top: 212px;
+            align-items: center;
         }
 
         .box {
@@ -61,9 +62,26 @@
     </style>
 </head>
 
+<script>
+    $(document).ready(function () {
+         $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/seoul",
+                data: {},
+                success: function(response){
+                    let temp = response['temp']
+
+                    $('#temp').text(temp)
+                }
+            })
+    });
+
+</script>
+
 <body>
     <div class="mytitle">
         <h1>강아지 팬명록</h1>
+        <P>현재기온 : <span id="temp">00.0</span>도</P>
     </div>
 
     <div class="box">
